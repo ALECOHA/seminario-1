@@ -2,63 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="Jude moon">
-    <title>Visualización de datos de Consulta Externa (Primer trimestre)</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Jude moon">
+	<title>Visualización de datos de Consulta Externa (Primer trimestre)</title>
 
-    <!-- load d3 and dimple libraries -->
-    <script src="http://d3js.org/d3.v4.min.js"></script>
-    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+	<!-- load d3 and dimple libraries -->
+	<script src="http://d3js.org/d3.v4.min.js">
 
-    <!-- add styles to text and graphics -->
-    <style>
-        h1 {
-            background-color: black;
-            color: floralwhite;
-            font-family: Helvetica, sans-serif;
-            width: 100%;
-            height: 80px;
-            text-align: center;
-            padding-top: 30px;
-        }
-        h2 {
-            font-size: 1.4em;
-            text-transform: uppercase;
-            font-family: Helvetica;
-            color: #000;
-            margin-top: 0;
-        }
-        h3 {
-            font-family: Helvetica, sans-serif;
-            text-align: center;
-        }
-        h4 {
-            font-family: Helvetica, sans-serif;
-            text-align: left;
-        }
-        div.text {
-            font-family: Helvetica;
-            padding: 5px;
-            margin: 20px;
-            border-radius: 10px;
-        }
-    </style>
+	</script>
+	<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js">
+
+	</script>
+
+	<!-- add styles to text and graphics -->
+	<style>
+		h1 {
+			background-color: black;
+			color: floralwhite;
+			font-family: Helvetica, sans-serif;
+			width: 100%;
+			height: 80px;
+			text-align: center;
+			padding-top: 30px;
+		}
+
+		h2 {
+			font-size: 1.4em;
+			text-transform: uppercase;
+			font-family: Helvetica;
+			color: #000;
+			margin-top: 0;
+		}
+
+		h3 {
+			font-family: Helvetica, sans-serif;
+			text-align: left;
+		}
+
+		
+    h4 {
+			font-family: Helvetica, sans-serif;
+			text-align: left;
+		}
+
+   
+
+		div.text {
+			font-family: Helvetica;
+			padding: 5px;
+			margin: 20px;
+			border-radius: 10px;
+		}
+	</style>
 </head>
 
 <body>
-    <h1 class="main-title">Productividad de Consulta Externa (Primer trimestre)</h1>
-    <h4 class="main-autor">Nombre: Alejandra Cordero Hernández</h3>
-    <h4 class="main-url">Url: <a href="https://js-fiydmy.stackblitz.io/">https://js-fiydmy.stackblitz.io/</a></h3>
-    <h4 class="main-fuente">Fuente: <a href="Reporte de Citas programadas en Consulta Externa del Hospital de Alta Especialidad Ixtapaluca">Reporte de Citas programadas en Consulta Externa del Hospital de Alta Especialidad Ixtapaluca</a></h3>
-    <h4 class="main-fecha">Fecha: 24/4/2019</h4>
-    <br>
+	<h1 class="main-title">Productividad de Consulta Externa (Primer trimestre)</h1>
+	<h4 class="main-autor">Nombre: Alejandra Cordero Hernández</h3>
+		<h4 class="main-url">Url: <a href="https://js-fiydmy.stackblitz.io/">https://js-fiydmy.stackblitz.io/</a></h3>
+			<h4 class="main-fuente">Fuente: <a href="Reporte de Citas programadas en Consulta Externa del Hospital de Alta Especialidad Ixtapaluca">Reporte
+					de Citas programadas en Consulta Externa del Hospital de Alta Especialidad Ixtapaluca</a></h3>
+				<h4 class="main-fecha">Fecha: 24/4/2019</h4>
+				<br>
     <br>
 
     <!-- add intro text to the page body -->
     <div class="summary">
         <h2 class="text-title">Resumen</h2>
         <div class="text">
-El objetivo del  estudio es mostrar un panorama general del comportamiento de las citas programadas durante el primer trimestre en el Hospital de Alta Especialidad Ixtapaluca con la finalidad de identificar áreas de oportunidad para brindar una atención de calidad a los usuarios objeto de esta H. Institución. El total de citas que se programaron fueron de 35,266 y la base de datos se subdivide en: Fecha,	Medico,	Tipo de Cita,	Especialidad,	Usuario que agenda,	Motivo de Cancelacion,	Comentarios de Cancelación,	Observaciones,	Estatus el tipo de cita otorgada.
+El objetivo del estudio es mostrar un panorama general del comportamiento de las citas programadas en Consulta Externa durante el primer trimestre en el Hospital de Alta Especialidad Ixtapaluca con la finalidad de identificar áreas de oportunidad para brindar una atención de calidad a los usuarios objeto de esta H. Institución. 
+<br>
+<br>
+
+
+El Hospital cuenta con un sistema electrónico  que genera reportes en PDF en tiempo real por tal motivo se analizaron dos reportes; "Citas Programadas" y "Citas ejecutadas" se realizó una limpieza de los datos, análisis de columnas, uso de filtros para cumplir el objetivo.  
 <br>
 <br>
 
@@ -71,7 +88,7 @@ Lo que se identifica en el área de Consulta Externa del Hospital es que la prin
 
 
             <div class="metadato  " >
-              La audiencia a quien se dirige el trabajo es a  los Jefes de Servicio, Subdirectores y Personal directivo que forma parte de la plantilla del Hospital de Alta Especialidad Ixtapaluca, cuyo fin es dar a conocer el comportamiento del área.  
+              La audiencia a quien se dirige el trabajo es a  los Jefes de Servicio, Subdirectores y Personal directivo que forma parte de la plantilla del Hospital de Alta Especialidad Ixtapaluca, cuyo fin es dar a conocer el comportamiento del área y al Profesor Raúl Reyero de la materia de Visualización para evaluar mi trabajo. 
               
 
             </div>
@@ -86,73 +103,92 @@ Lo que se identifica en el área de Consulta Externa del Hospital es que la prin
     <!-- add data visualization -->
     <div class="plot">
         <!-- The first bar chart -->
-        <h2 class="plot-title">Hombres y mujeres del pasaje</h2>
+        <h2 class="plot-title">Productividad  por día del mes</h2>
         <div class="text">
-          Uso el tipo de gráfico circular o de tarta para representar las proporciones entre mujeres/hombres y cada una de las 3 categorias. Este tipo de gráfico es adecuado en este caso para representar proporciones en las que no es importante la precisión. Tambien podría haber utilizado gráficos de barras. <br>
-          Se han utilizado la herramienta tableau online para los gráficos de barras y circulares.
+          Los gráficos de líneas se utilizan para mostrar el valor cuantitativo en un intervalo o intervalo de tiempo continuo. Se usa con mayor frecuencia para mostrar tendencias y relaciones (cuando se agrupan con otras líneas). Los gráficos de línea también ayudan a dar un «panorama general» en un intervalo, para ver cómo se ha desarrollado durante ese período.
+          Se han utilizado la herramienta tableau online para gráficos de líneas, datawrapper así como tableau online para gráficos de barras y google sheet para gráfico de tarta. <br>
 
+
+          
         </div>  
 
-        <div id="plotContainer1">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/NL0HDs1/Titanic4.png" alt="Titanic4" border="0"></a>
-        </div>
-        
-          <h2 class="plot-title">Categorías del pasaje</h2>
-        <div id="plotContainer2">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/Z11BTL2/Titanic5.png" alt="Titanic5" border="0"></a>
-        </div>
-
-
-
-        <h2 class="plot-title">SUPERVIVENCIA DENTRO DE CADA GRUPO</h2>
-        <div class="text">
-          En esta representación ya incluimos la variable supervivencia que es la clave de nuestro análisis. Mediante gráficos de barras apiladas ya podemos anticipar como la supervivencia de los pasajeros no parece aleatoria sino que parece depender tanto del sexo del pasajero como de la categoria del pasaje.
-          Podría haber utilizado gráficos circulares o de tarta como en el caso anterior pero en este caso para las categorías  los valores de los supervivientes están próximos.
-        </div> 
-
-        <div id="plotContainer3">
-        <a href="https://ibb.co/swp6Pcs"><img src="https://i.ibb.co/J7Wyd8r/Supervivientes-por-Grupos.png" alt="Supervivientes-por-Grupos" border="0"></a>
-        </div>
-        
-        
-        </br>
-        </br>
-
-        <!-- The second bar chart -->
-        <h2 class="plot-title">Supervivientes</h2>
-        <div id="plotContainer4">
-          <div class="text">
-              Finalmente tratamos de representar en un mismo gráfico el cruce de las dos variables cualitativas(sexo y pasaje) que nos interesa analizar sobre la varialible cantidad de supervivientes o fallecidos(variable cuantitativa). 
-               
-          </div>
-<br>
- <a href="https://imgbb.com/"><img src="https://i.ibb.co/fpg1ZT2/screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-29-41.png" alt="screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-29-41" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'></a><br />
- 
- <a href="https://imgbb.com/"><img src="https://i.ibb.co/L1DZRsp/screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-32-07.png" alt="screenshot-eu-west-1a-online-tableau-com-2019-04-02-14-32-07" border="0"></a><br /><a target='_blank' href='https://es.imgbb.com/'></a><br />
-<br>
-<a href="https://ibb.co/Dt23NTN"><img src="https://i.ibb.co/CzGxqDq/Titanic3.png" alt="Titanic3" border="0"></a>
-
-
+        <a href="https://ibb.co/vHY7qZx"><img src="https://i.ibb.co/Qfd2QrF/Seminario.png" alt="Seminario" border="0"></a>
 
         </div>
+
+         Con este gráfico podemos visualizar los días de la semana con mayor afluencia en el área de consulta externa cuyos picos coinciden con los días lunes y jueves dependiendo de la especialidad. 
+
+
+
+    </div>
+
+
+
+        <h3 class="plot-title">Productividad por Especialidad</h3>
+        </div class="text">
+        El gráfico de barras nos permite comparar las diferentes especialidades de tipo clínico y quirúrgico observando que las últimas son las de mayor demanda. 
+
+
+
+
+
+        <a href="https://ibb.co/7Grp9ML"><img src="https://i.ibb.co/FB8YPZC/Productividad-por-especialidad-1.png" alt="Productividad-por-especialidad-1" border="0"></a>
+
+        </div>
+         <h3 class="plot-title">Relación de citas programadas por sexo</h3>
+
+
+
+
+
+
+       <div class="text">
+        Un diagrama de dónut enfatiza el uso del área, para hacer que el espectador se enfoque más en los cambios en los valores globales. Se centra en la lectura de la longitud de los arcos, en lugar de comparar las proporciones entre las rodajas.gráficos de barras. <br>
+          
+
+
+       
+           <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRlIFKBCoJ0FJqpxypb3MDXB4o1Zjqxhvmp5Pyl9htxOn0KgQ49Co6Lzz-hcFcEy_XbT9WFZG3PpOpl/pubchart?oid=1539816246&amp;format=image"></iframe>
+
+           <br>
+           <br>
+
+
+    </div>   
+    <h3 class="plot-title">Historías Clínicas realizadas por Especialidad</h3>
+    </div class="text">
+    Una parte importante del Expediente Clínico es el cumplimiento de la normatividad que incluye la realización de Historias Clínicas y con este gráfico observamos el poco apego con la finalidad de crear estrategias para solucionarlo.  
+
+    <br>
+    <br>
+
+
+
+        <iframe title="Historias Cl&iacute;nicas realizadas en el trimestre" aria-label="Stacked Bars" id="datawrapper-chart-PZF3O" src="//datawrapper.dwcdn.net/PZF3O/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important;" height="930"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();</script>
+        <br>
+        <br>
+
+              </div>
 <!-- add outro text to the page body -->
     <div class="Interpretation">
-        <h2 class="text-title">Interpretation</h2>
+        <h2 class="text-title">Interpretación</h2>
         <div class="text">
-            <p>Teniendo en cuenta que las mujeres eran del 35%(466/1309) y las mujeres de 1ª y 2ª clase representan solo el 24%( (139+94)/1309) del tamaño total de la muestra, se evidencia que las personas que se pusieron en botes salvavidas no se tomaron al azar, sino de forma selectiva. La visualización de gráficos cirulares combinados muestra que las características de ser mujer y pertenecer a las clases más altas(1ª y 2ª) eran las principales prioridades para colocarse en botes salvavidas.</p>
+            <p>Finalmente podemos concluir que la mayor afluencia de pacientes son del sexo femenino y el día lunes y jueves se incrementa el número de pacientes que asisten al área así como  de acuerdo a los principales diagnósticos observados requerimos más especialistas Oncologos y  Endocrinologos para una mejor atención. </p>
             </br>
         </div>
     </div>
 
-     <div id="plotContainer5">   
-<a href="https://ibb.co/ZhbN85p"><img src="https://i.ibb.co/JzSC7Vw/Supervivientes-por-Grupos2.png" alt="Supervivientes-por-Grupos2" border="0"></a>
-</div>
+    <a href="https://ibb.co/v4j10Fv"><img src="https://i.ibb.co/B2CL0pK/Dashboard-3.png" alt="Dashboard-3" border="0"></a>
 
-        </br>
-        </br>
-        </br>
-    </div>
+
+
+
+
+
+
+
+
+
+
 
     
-</body>
-</html>
